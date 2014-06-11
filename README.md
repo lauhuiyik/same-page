@@ -42,4 +42,3 @@ Support <a name='support'></a>
 If you have any questions/concerns, please feel free to contact me.
 My email address is guanhao3797@gmail.com
 
-**Will update the README when project is more substantial.
