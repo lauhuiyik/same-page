@@ -1,10 +1,11 @@
 Same Page
 =========
+###We are now on the same page.
 
 Table of Content
 ----------------
 - [Introduction](#intro)
-- [Installation](#install)
+- [Features](#features)
 - [Usage](#usage)
 - [Software Used](#software)
 - [License](#license)
@@ -12,15 +13,19 @@ Table of Content
 
 Introduction <a name='intro'></a>
 --------------------------------
+Remember how the project that time went? It went pretty bad right? People were goofing off, slacking and leaving all the work to one person.
 
-Installation <a name='install'></a>
-----------------------------------
+We are here to change **that!** Regardless of what project it is, whether it is a school assignment or a programming project, we provide a platform where you can work on the same file **at the same time**. We think that by having everyone working on something at the same time, the group's progress and productivity will vastly improve.
 
-Usage <a name='usage'></a>
--------------------------
+Features <a name='intro'></a>
+--------------------------------
+- Real-time file editting
+- Have group chats
+- Upload files on site
 
 License <a name='license'</a>
 ----------------------------
+The following code is released under the MIT License, see above for it.
 
 Support <a name='support'></a>
 ------------------------------
