@@ -11,7 +11,7 @@ $('#ether-pad').pad({
 }); 
 */
 
-var elem = document.getElementById('editor');
+var elem = document.getElementById('text-editor');
 
 sharejs.open('hello', 'text', function(error, doc) {
 	if (error) {
