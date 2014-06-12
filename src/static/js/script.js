@@ -7,12 +7,12 @@ $('textarea.editor').ckeditor();
 
 var prev_data = '';
 
-// Get the editor data.
-setInterval(function(){
+(function worker(){
     var data = $('textarea.editor').val();
     if (data != prev_data) {
         console.log(data);
     }
     prev_data = data;
-}, 100);
+    setTimeout(worker, 100);
+})();
 
