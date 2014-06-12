@@ -16,3 +16,10 @@ abbr[title] {
 .signature-text {
     color: #424242;
 }
+
+.glyphicon-heart,
+.glyphicon-chevron-left,
+.glyphicon-chevron-right {
+    font-size: 0.8em;
+
+}
