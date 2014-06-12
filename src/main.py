@@ -14,8 +14,7 @@ config['webapp2_extras.sessions'] = {
 }
 
 app = webapp2.WSGIApplication([
-      ('/', FrontPage),
-      ('/login', LoginPage)],
+      ('/', FrontPage)],
       config = config, debug = True)
 
 if __name__ == '__main__':
