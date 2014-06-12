@@ -8,6 +8,12 @@ handlers:
 - url: /static
   static_dir: static/
   
+- url: /share
+  static_dir: static/js/share/
+  
+- url: /channel
+  static_dir: static/js/channel/
+  
 - url: /.*
   script: main.app
   
