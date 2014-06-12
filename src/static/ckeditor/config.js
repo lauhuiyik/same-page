@@ -38,4 +38,7 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	// Autogrow textarea
 	config.extraPlugins = 'autogrow';
+	
+	// Beautiful Bootstrap skin
+	config.skin = 'bootstrapck';
 };
