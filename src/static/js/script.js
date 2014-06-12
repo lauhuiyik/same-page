@@ -11,4 +11,15 @@ $('#ether-pad').pad({
 }); 
 */
 
+var elem = document.getElementById('editor');
+
+sharejs.open('hello', 'text', function(error, doc) {
+	if (error) {
+		console.log(error);
+	} else {
+		elem.disabled = false;
+		doc.attach_textarea(elem);
+	}
+});
+
 
