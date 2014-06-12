@@ -83,13 +83,20 @@
         <script src="/share/share.js"></script>
         <script src="/share/textarea.js"></script>
         <script>
+var elem = document.getElementById('editor');
+console.log(elem);
 
-var connection = sharejs.open('hello', 'text', function(error, doc) {
-    var elem = document.getElementById('editor');
-    doc.attach_textarea(elem);
+var connection = sharejs.open('hello', 'text', 'http://localhost:8080', function(error, doc) {
+	if (error) {
+		console.log(error);
+	} else {
+		elem.disabled = false;
+		doc.attach_textarea(elem);
+	}
 });
 
 console.log(connection);
+
         </script>
         <script src="/static/js/script.js"></script>
     </body>
