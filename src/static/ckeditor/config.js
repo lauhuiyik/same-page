@@ -23,8 +23,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
 		{ name: 'styles' },
 		{ name: 'colors' },
-		{ name: 'about' },
-        { name: 'pbckcode' }
+		{ name: 'about' }
 	];
 
 	// Remove some buttons provided by the standard plugins, which are
@@ -37,35 +36,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 	
-	// Additional plugins to make CKEditor more useful
-	config.extraPlugins = 'autogrow,pbckcode';
-
-    // ADVANCED CONTENT FILTER (ACF)
-    // ACF protects your CKEditor instance of adding unofficial tags
-    // however it strips out the pre tag of pbckcode plugin
-    // add this rule to enable it, useful when you want to re edit a post
-    config.allowedContent= 'pre[*]{*}(*)'; // add other rules here
-    // PBCKCODE CUSTOMIZATION
-    config.pbckcode = {
-        // An optional class to your pre tag.
-        cls : '',
-    
-        // The syntax highlighter you will use in the output view
-        highlighter : 'PRETTIFY',
-    
-        // An array of the available modes for you plugin.
-        // The key corresponds to the string shown in the select tag.
-        // The value correspond to the loaded file for ACE Editor.
-        modes :  [ ['HTML', 'html'], ['CSS', 'css'], ['PHP', 'php'], ['JS', 'javascript'] ],
-    
-        // The theme of the ACE Editor of the plugin.
-        theme : 'textmate',
-    
-        // Tab indentation (in spaces)
-        tab_size : '4'
-    };
-    //
-	// Beautiful Bootstrap skin
-	config.skin = 'bootstrapck';
+	config.extraPlugins = 'autogrow';
+	
+	// Makes autogrow functional on startup
+	config.autoGrow_onStartup = true;
+	// Becomes a scrollable window at 400px height
+	config.autoGrow_maxHeight = 400;
+	// Makes the transition more smooth
+	config.autoGrow_bottomSpace = 50;
 };
 
