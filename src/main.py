@@ -5,6 +5,7 @@ import json
 import webapp2
 
 from handlers.front import FrontPage
+from handlers.ajax import AjaxHandler
 
 ##############################################################################
 
@@ -14,7 +15,8 @@ config['webapp2_extras.sessions'] = {
 }
 
 app = webapp2.WSGIApplication([
-      ('/', FrontPage)],
+      ('/', FrontPage),
+      ('/ajax', AjaxHandler),],
       config = config, debug = True)
 
 if __name__ == '__main__':
