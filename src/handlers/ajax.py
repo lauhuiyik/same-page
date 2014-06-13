@@ -15,7 +15,12 @@ class AjaxHandler(BaseHandler):
     
     def get(self):
         data = memcache.get('data')
-        return data
+
+        self.response.headers['Content-Type'] = 'application/json'   
+        obj = {
+            'data': data, 
+        } 
+        self.response.out.write(json.dumps(obj))
         
     def post(self):
         data = self.request.get('doc')

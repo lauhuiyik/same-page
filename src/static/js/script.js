@@ -5,29 +5,27 @@
 
 $('textarea.editor').ckeditor();
 
-var prev_data = '';
-
 (function worker(){
-    var data = $('textarea.editor').val();
-    if (data != prev_data) {
-        $.when(
-            $.ajax({
-                type: 'POST',
-                url: '/ajax',
-                data: {
-                    doc: data
-                }
-            }),
+    var text = $('textarea.editor').val();
+    
+    $.when(
 
-            $.get('/ajax', function(data) {
-                $('textarea.editor').val(data.doc)
-            }, "json")
+        $.getJSON('/ajax', function(data) {
+            console.log(data)
+        }),
 
-       ).done(function(){
-           console.log('ajax done');
-       });
-    }
-    prev_data = data;
-    setTimeout(worker, 100);
+        $.ajax({
+            url: '/ajax',
+            type: 'POST',
+            data: {
+                doc: text
+            }
+        })
+
+    ).done(function(){
+    
+    });
+
+    setTimeout(worker, 10000);
 })();
 
