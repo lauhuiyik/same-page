@@ -7,6 +7,10 @@ $('textarea.editor').ckeditor();
 
 var prev_text = '';
 
+var range = editor.createRange();
+
+editor.getSelection().selectRanges( [ range ] );
+
 (function worker(){
     var text = $('textarea.editor').val();
 
@@ -30,6 +34,7 @@ var prev_text = '';
         new_data = data['data'];
         if (new_data != text) {
             $('textarea.editor').val(new_data);
+            range.moveToElementEditablePosition( editor.editable(), true ); // bar.^</p>
         }
     });
     

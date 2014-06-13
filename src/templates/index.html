@@ -9,6 +9,7 @@
         <meta name="author" content="Maverick Chang">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen"/>
+        <script src="/static/ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <!-- Top navbar -->
@@ -40,6 +41,9 @@
         <div class="container-fluid">
             <div class="col-md-8 col-md-offset-2">
                 <textarea class="editor" name="editor">&lt;p&gt;Initial value.&lt;/p&gt;</textarea>
+                <script>
+                    CKEDITOR.replace('editor');
+                </script>
             </div>
         </div>
         
@@ -72,8 +76,6 @@
             </div>
         </nav>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="/static/ckeditor/ckeditor.js"></script>
-        <script src="/static/ckeditor/adapters/jquery.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="/static/js/script.js"></script>
     </body>
