@@ -2,7 +2,7 @@
 
 import web
 from lib.utils import render
-from lib.etherpad import pad
+from lib.utils import etherpad
 
 ##########
 
