@@ -6,10 +6,12 @@ from lib.utils import etherpad
 
 ##########
 
-class FrontPage:
+class WorkPage:
 
     def GET(self):
-        return render('front.html')
+        content = etherpad.getHTML(padID = 'thisisguan')
+        web.debug(content)
+        return render('index.html')
 
     def POST(self):
         pass

@@ -3,16 +3,19 @@
 
 import web
 from handlers.front import FrontPage
+from handlers.work import WorkPage
 
 ##########
 
-urls = ('/', 'FrontPage')
+urls = ('/work', 'WorkPage',
+        '/', 'FrontPage')
 
 app = web.application(urls, globals())
+
 db = web.database(user = 'guanhao97',
                   dbn = 'postgres',
-                  db = 'site_db',
-                  pw = '')
+                  db = 'same_page',
+                  pw = '55popo')
 
 ##########
 
