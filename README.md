@@ -25,13 +25,16 @@ Features <a name='intro'></a>
 
 Software Used<a name='software'></a>
 ------------------------------------
-- Google App Engine - Python SDK
-- Google Datastore
-- Webapp2
+- Web.py
+- PostgreSQL
+- Gunicorn
+- Nginx
 - Jinja2
 - Memcache
 - jQuery
 - Bootstrap
+- Etherpad-Lite
+- Node.js
 
 License <a name='license'</a>
 ----------------------------
