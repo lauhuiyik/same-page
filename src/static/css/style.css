@@ -4,6 +4,7 @@
  *
  */
 
+// Basic page requirements for consistency
 body {
     padding-top: 6em;
 }
@@ -16,3 +17,9 @@ abbr[title] {
 .signature-text {
     color: #424242;
 }
+
+// Front page
+.signup-stripe {
+    background-image: url(/static/images/marketing-hero.jpg);
+}
+
