@@ -2,8 +2,6 @@
 ##########
 
 import web
-from lib.validate import valid_user, valid_pw, valid_email
-
 from handlers.front import FrontPage
 
 ##########
