@@ -1,6 +1,7 @@
 ##########
 
 import os
+import web
 import pylibmc
 from etherpad_lite import EtherpadLiteClient
 from jinja2 import Environment,FileSystemLoader
@@ -54,5 +55,13 @@ etherpad = EtherpadLiteClient(base_params = {
         'apikey': '2cf9c48c15aa877c1aad4383aa2bd6abf7de75986f6ba036f90ba9ef18ac274c'
     })
 
+
+"""
+Configuration for db
+"""
+db = web.database(user = 'guanhao97',
+                  dbn = 'postgres',
+                  db = 'same_page',
+                  pw = '55popo')
 
 

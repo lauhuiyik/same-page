@@ -12,11 +12,6 @@ urls = ('/work', 'WorkPage',
 
 app = web.application(urls, globals())
 
-db = web.database(user = 'guanhao97',
-                  dbn = 'postgres',
-                  db = 'same_page',
-                  pw = '55popo')
-
 ##########
 
 if __name__ == "__main__":
