@@ -4,9 +4,8 @@
  *
  */
 
-// Basic page requirements for consistency
+/* Basic page requirements for consistency */
 body {
-    padding-top: 6em;
 }
 
 abbr[title] {
@@ -14,12 +13,27 @@ abbr[title] {
     cursor: pointer;
 }
 
+.navbar-fixed-top {
+    background-color: #F2F2F2;
+}
+
 .signature-text {
     color: #424242;
 }
 
-// Front page
+/* Front page */
+.front-body {
+    padding-top: none;
+}
+
 .signup-stripe {
     background-image: url(/static/images/marketing-hero.jpg);
+    background-size: cover;
+    color: #F2F2F2;
+    padding: 8em;
+}
+
+#signup-username, #signup-pw {
+    width: 20em;
 }
 
