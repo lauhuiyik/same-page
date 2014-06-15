@@ -31,7 +31,7 @@ class FrontPage:
 
             # Specifies that hmac uses sha256 instead of md5
             # hmac complicates the hash
-            hashed_pw = hmac.new(salt, pw, sha256)
+            hashed_pw = hmac.new(salt, pw, sha256).hexdigest()
 
             db.insert('users', username = uid, 
                       pw = hashed_pw, salt = salt,

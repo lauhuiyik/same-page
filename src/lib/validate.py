@@ -25,6 +25,10 @@ def valid_email(email):
 		return EMAIL_RE.match(email)
 
 def make_salt():
+    """
+    Generates 16-character salt for encrypting passwords.
+    Encryption done with SHA256 via HMAC.
+    """
     ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     chars = []
     for i in range(16):
