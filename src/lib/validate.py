@@ -38,39 +38,64 @@ def make_salt():
     chars = []
     for i in range(16):
         chars.append(random.choice(ALPHABET))
-    return "".join(chars)
+    return ''.join(chars)
 
 def make_cookie(uid, pw, salt):
     cookie = uid + '|' + pw + '|' + salt
     return cookie
 
 def valid_login():
+    """
+    Checks the browser's cookie and extract password.
+    Matches with memcache-stored (sometimes, but RARELY db-stored) password.
+    Redirects users to front page if not match.
+    """
+
     login_cookie  = web.cookies().get('login_info')
 
-    # login_cookie in the form of 'username|hashed_pw'
-    # Splitted login_cookie = ['username', 'hashed_pw']
-    login_cookie = login_cookie.split('|')
-    uid = login_cookie[0]
-    pw = login_cookie[1]
+    # Checks if the user has the cookie
+    if login_cookie:
+        # login_cookie in the form of 'username|hashed_pw'
+        # Splitted login_cookie = ['username', 'hashed_pw']
+        # The split functions runs even though there's no '|'
+        # Making it a list with a single string inside ['something']
+        login_cookie = login_cookie.split('|')
 
-    # Checks if memcache has password
-    db_pw = memcache.get(uid + '_login')
+        # The first and second assignment MIGHT raise an IndexError
+        # So it's safe to raise an exception if the user changes the cookie's value
+        try:
+            uid = login_cookie[0]
+            pw = login_cookie[1]
 
-    # Does DB Query when not available
-    # Sets uid_login to password
-    if db_pw is None:
-        user = db.select('users', where = 'username = $uid',
-                         vars = locals())[0]
-        db_pw = user['pw']
-        memcache.set(uid + '_login', db_pw)
+            # Checks if memcache has password
+            db_pw = memcache.get(uid + '_login')
 
-    # Checks if they are the same
-    # Renders html
-    if pw == db_pw:
-        return True
+            # Does DB Query when not available
+            # Sets uid_login to password
+            if db_pw is None:
+                user = db.select('users', where = 'username = $uid',
+                                 vars = locals())[0]
+                db_pw = user['pw']
+                memcache.set(uid + '_login', db_pw)
 
-    # Redirects to front page
+            # Checks if they are the same
+            # Renders html
+            if pw == db_pw:
+                return True
+
+            # Redirects to front page
+            else:
+                return False
+
+        # The user changed the cookie's value
+        except IndexError:
+            web.debug('ERROR: Cookie is not in correct format')
+            web.debug('INFO: Someone may be changing the cookie value')
+            return False
+
     else:
+        web.debug('ERROR: Cookie is not in correct format')
+        web.debug('INFO: User does not have cookie')
         return False
 
 
