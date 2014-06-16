@@ -3,11 +3,11 @@
 
 import web
 from handlers.front import FrontPage
-from handlers.work import WorkPage
+from handlers.home import HomePage
 
 ##########
 
-urls = ('/work', 'WorkPage',
+urls = ('/home', 'HomePage',
         '/', 'FrontPage')
 
 app = web.application(urls, globals())

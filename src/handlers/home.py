@@ -6,7 +6,7 @@ from lib.utils import etherpad
 
 ##########
 
-class WorkPage:
+class HomePage:
 
     def GET(self):
         content = etherpad.getHTML(padID = 'thisisguan')

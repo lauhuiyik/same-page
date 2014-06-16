@@ -19,7 +19,6 @@ class FrontPage:
         return render('front.html')
 
     def POST(self):
-        web.debug(web.input())
         uid = web.input().signup_uid
         pw = web.input().signup_pw
         
@@ -37,7 +36,7 @@ class FrontPage:
                       pw = hashed_pw, salt = salt,
                       joined = datetime.now())
 
-            raise web.seeother('/work')
+            raise web.seeother('/home')
 
         else:
             raise web.seeother('/')
