@@ -9,8 +9,6 @@ from lib.utils import etherpad
 class HomePage:
 
     def GET(self):
-        content = etherpad.getHTML(padID = 'thisisguan')
-        web.debug(content)
         return render('index.html')
 
     def POST(self):
