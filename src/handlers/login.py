@@ -4,9 +4,8 @@ import web
 import hmac
 from hashlib import sha256
 
-from lib.utils import db
-from lib.utils import render
-from lib.utils import etherpad
+from lib.utils import db, render, etherpad, memcache
+from lib.validate import make_cookie
 
 ##########
 
@@ -34,13 +33,14 @@ class LoginPage:
         # Each user has a different salt
         # SHA256 used because it's better than default MD5
         # Rehash password and check if equal to database's
-        hashed_pw = hmac(login_user['salt'], pw, sha256)
+        salt = login_user['salt']
+        hashed_pw = hmac(salt, pw, sha256).hexdigest()
         
         # Hashed password with user's salt matches!
         # Moves on to process the remember me toggle
         # Sets cookies accordingly
         # Redirects to /home
-        if hashed_pw == user['pw']:
+        if hashed_pw == login_user['pw']:
 
             # Exception checking using to-string conversion
             # Raises error if not remember me is not toggled
@@ -58,17 +58,24 @@ class LoginPage:
             # Sets the cookie expiration to 3 months
             # Resets cookie expiration on every login
             if rmb_me:
+
                 # make_cookie( uid, hashed_pw, salt )
                 # cookie = uid|hashed_pw|salt
                 web.setcookie('login_info',
                               make_cookie(uid, hashed_pw),
                               7776000)
+
+                # Sets uid_login to hashed_pw for later confirmation
+                memcache.set(uid + '_login', hashed_pw)
                 raise web.seeother('/home')
 
             # Session only login, remember me is False
             else:
+
                 web.setcookie('login_info',
                               make_cookie(uid, hashed_pw))
+                # Sets uid_login to hashed_pw for later confirmation
+                memcache.set(uid + '_login', hashed_pw)
                 raise web.seeother('/home')
 
         # Input password does not match the one in database
