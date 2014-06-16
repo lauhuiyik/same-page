@@ -12,7 +12,7 @@ class HomePage:
     def GET(self):
         
         # Checks if db's password matches cookie's
-        if valid_login:
+        if valid_login():
             return render('index.html')
 
         # User does not have access to content
